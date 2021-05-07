@@ -1,0 +1,20 @@
+{
+  "implicitDependencies": {
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
+    ".eslintrc.json": "*"
+  },
+  "affected": { "defaultBase": "master" },
+  "npmScope": "vnd",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
+    }
+  },
+  "projects": {
+    "vending": { "tags": [] },
+    "vending-e2e": { "tags": [], "implicitDependencies": ["vending"] },
+    "vending-api": { "tags": [] },
+    "common": { "tags": [] }
+  }
+}
