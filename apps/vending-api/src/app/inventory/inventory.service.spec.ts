@@ -25,6 +25,29 @@ describe('InventoryService', () => {
     });
   });
 
+  describe('Status Test', () => {
+    it('returns inventory status', () => {
+      const status = inventorySvc.getStatus();
+      expect(Array.isArray(status)).toBe(true);
+    });
+  });
+
+  describe('Stock Count Test', () => {
+    it('returns stock count', () => {
+      const cokeCount = inventorySvc.getStockCount(ProductType.COKE);
+      const pepsiCount = inventorySvc.getStockCount(ProductType.PEPSI);
+      const dewCount = inventorySvc.getStockCount(ProductType.DEW);
+      expect(cokeCount).toBe(10);
+      expect(pepsiCount).toBe(10);
+      expect(dewCount).toBe(10);
+    });
+    it('throws on unknown product type', () => {
+      expect(() => {
+        inventorySvc.getStockCount('random');
+      }).toThrowError();
+    });
+  });
+
   describe('Fullfill Order Test', () => {
     it('Returns false if Out of stock', () => {
       const canfill = inventorySvc.canFillOrders([new Coke(3), new Pepsi(11)]);

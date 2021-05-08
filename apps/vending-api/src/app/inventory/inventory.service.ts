@@ -8,6 +8,7 @@ export interface IInventoryService {
   canFillOrders(products: IProduct[]);
   fillOrder(product: IProduct);
   getStockCount(type: string): number;
+  getStatus(): IProduct[];
 }
 
 @Injectable()
@@ -44,6 +45,11 @@ export class InventoryService implements IInventoryService {
     if (this.productTypeExists(type)) {
       return this.inventory[type].count();
     }
+  }
+  getStatus(): IProduct[] {
+    return Object.keys(this.inventory).map((k) =>
+      this.inventory[k].getProduct()
+    );
   }
 
   static getTotalCost(products: IProduct[]) {

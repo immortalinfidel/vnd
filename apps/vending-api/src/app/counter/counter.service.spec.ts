@@ -15,6 +15,13 @@ describe('CounterService', () => {
     counterSvc = moduleRef.get<CounterService>(CounterService);
   });
 
+  describe('Status Test', () => {
+    it('returns counter status', () => {
+      const status = counterSvc.getStatus();
+      expect(Array.isArray(status)).toBe(true);
+    });
+  });
+
   describe('Balance Test', () => {
     it('returns sum of money', () => {
       const cash = newCash(10);

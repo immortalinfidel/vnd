@@ -13,7 +13,7 @@ export class ProductStore implements IProductStore {
     this.store = initialStock;
   }
   getProduct(): IProduct {
-    return this.getProduct();
+    return this.store;
   }
   retrieveProduct(count: number) {
     if (this.store.count < count) {

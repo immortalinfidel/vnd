@@ -18,6 +18,7 @@ export interface ICounterService {
   deposit(money: IMoney);
   withdraw(money: IMoney);
   totalBalance(): number;
+  getStatus(): IMoney[];
   checkBalance(type: string);
   makeChange(changeAmount: number): ChangeReturn;
 }
@@ -71,6 +72,10 @@ export class CounterService implements ICounterService {
       cash: cashWithdraw,
       coin: coinWithdraw,
     } as ChangeReturn;
+  }
+
+  getStatus(): IMoney[] {
+    return Object.keys(this.counter).map((k) => this.counter[k].getMoney());
   }
 
   static getTotalAmount(money: IMoney[]) {
