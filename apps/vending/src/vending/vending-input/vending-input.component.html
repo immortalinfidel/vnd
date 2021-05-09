@@ -1,18 +1,27 @@
-<div fxLayout="column">
-  <h4>{{ label }}</h4>
-  <mat-form-field appearance="standard">
-    <button type="button" (click)="decrement()" mat-icon-button matPrefix>
-      <mat-icon>remove</mat-icon>
-    </button>
-    <input
-      autocomplete="disabled"
-      name="count"
-      matInput
-      [formControl]="fromGroup.get('count')"
-      required
+<div fxLayout="row" style="width: 100%">
+  <div fxLayout="column">
+    <img
+      style="width: 48px; height: 48px"
+      src="/assets/icons/{{ label }}.svg"
     />
-    <button type="button" (click)="increment()" mat-icon-button matSuffix>
-      <mat-icon>add</mat-icon>
-    </button>
-  </mat-form-field>
+  </div>
+
+  <div fxLayout="column" fxFlex="grow" style="margin-left: 8px">
+    <mat-form-field appearance="standard">
+      <mat-label>{{ label }}</mat-label>
+      <button type="button" (click)="decrement()" mat-icon-button matPrefix>
+        <mat-icon>remove</mat-icon>
+      </button>
+      <input
+        autocomplete="disabled"
+        name="count"
+        matInput
+        [formControl]="fromGroup.get('count')"
+        required
+      />
+      <button type="button" (click)="increment()" mat-icon-button matSuffix>
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
 </div>

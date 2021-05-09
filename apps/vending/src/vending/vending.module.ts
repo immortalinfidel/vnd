@@ -9,6 +9,8 @@ import { VendingInputComponent } from './vending-input/vending-input.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDividerModule } from '@angular/material/divider';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -18,6 +20,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatFormFieldModule,
     FormsModule,
     MatButtonModule,
+    MatDividerModule,
 
     FlexLayoutModule,
     MatIconModule,

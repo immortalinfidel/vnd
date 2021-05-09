@@ -1,10 +1,15 @@
 <form *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
   <div fxLayout="column">
+    <h3>Select Products</h3>
     <vnd-vending-input
       *ngFor="let product of formGroup.get('products').controls"
       [fromGroup]="product"
       [label]="product.get('type').value"
     ></vnd-vending-input>
+
+    <mat-divider [inset]="true"></mat-divider>
+
+    <h3>Input Money</h3>
 
     <vnd-vending-input
       *ngFor="let money of moneyControls"
