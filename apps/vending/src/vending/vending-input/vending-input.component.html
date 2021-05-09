@@ -1,0 +1,18 @@
+<div fxLayout="column">
+  <h4>{{ label }}</h4>
+  <mat-form-field appearance="standard">
+    <button type="button" (click)="decrement()" mat-icon-button matPrefix>
+      <mat-icon>remove</mat-icon>
+    </button>
+    <input
+      autocomplete="disabled"
+      name="count"
+      matInput
+      [formControl]="fromGroup.get('count')"
+      required
+    />
+    <button type="button" (click)="increment()" mat-icon-button matSuffix>
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-form-field>
+</div>

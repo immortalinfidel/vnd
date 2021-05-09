@@ -52,7 +52,7 @@
               "apps/vending/src/favicon.ico",
               "apps/vending/src/assets"
             ],
-            "styles": ["apps/vending/src/styles.scss"],
+            "styles": ["./node_modules/@angular/material/prebuilt-themes/indigo-pink.css", "apps/vending/src/styles.scss"],
             "scripts": []
           },
           "configurations": {

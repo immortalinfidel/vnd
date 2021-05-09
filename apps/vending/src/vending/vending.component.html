@@ -1,0 +1,26 @@
+<form *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <div fxLayout="column">
+    <vnd-vending-input
+      *ngFor="let product of formGroup.get('products').controls"
+      [fromGroup]="product"
+      [label]="product.get('type').value"
+    ></vnd-vending-input>
+
+    <vnd-vending-input
+      *ngFor="let money of moneyControls"
+      [fromGroup]="money"
+      [label]="money.get('type').value"
+    ></vnd-vending-input>
+    <button
+      mat-stroked-button
+      color="primary"
+      [disabled]="formState !== 'INIT'"
+      type="submit"
+    >
+      Purchase
+      <mat-icon *ngIf="formState == 'INPROGRESS'">
+        <mat-spinner class="secondary-text" diameter="20"> </mat-spinner>
+      </mat-icon>
+    </button>
+  </div>
+</form>
