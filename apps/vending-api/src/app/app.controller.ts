@@ -14,7 +14,6 @@ import {
   VendingErrors,
 } from '@vnd/common';
 
-import { AppService } from './app.service';
 import { newCash, newCoin } from './money/money.model';
 import { Coke, Dew, Pepsi } from './product/product.model';
 import { VendingInput } from './vending/vending.input';
@@ -22,15 +21,7 @@ import { VendingService } from './vending/vending.service';
 
 @Controller()
 export class AppController {
-  constructor(
-    private readonly appService: AppService,
-    private vendingSvc: VendingService
-  ) {}
-
-  @Get()
-  getData() {
-    return this.appService.getData();
-  }
+  constructor(private vendingSvc: VendingService) {}
 
   @Get('status')
   getStatus() {

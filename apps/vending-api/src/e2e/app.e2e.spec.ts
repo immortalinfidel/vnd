@@ -1,16 +1,17 @@
-import { ValidationPipe } from '@nestjs/common';
-import { Test, TestingModule } from '@nestjs/testing';
 import {
   IMoneyInput,
   IVendingInput,
   IVendingResult,
+  MoneyType,
   VendingErrors,
 } from '@vnd/common';
 import * as request from 'supertest';
-import { CounterService } from '../app/counter/counter.service';
-import { newCash, newCoin } from '../app/money/money.model';
-import { Coke, Pepsi } from '../app/product/product.model';
 import { AppModule } from './../app/app.module';
+import { ValidationPipe } from '@nestjs/common';
+import { Test, TestingModule } from '@nestjs/testing';
+import { Coke, Pepsi } from '../app/product/product.model';
+import { newCash, newCoin } from '../app/money/money.model';
+import { CounterService } from '../app/counter/counter.service';
 
 describe('AppController (e2e)', () => {
   let app;
@@ -24,13 +25,6 @@ describe('AppController (e2e)', () => {
     app = moduleFixture.createNestApplication();
     app.useGlobalPipes(new ValidationPipe());
     await app.init();
-  });
-
-  it('{GET}/', () => {
-    return request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect({ message: 'Welcome to vending-api!' });
   });
 
   it('{GET}/status', () => {
@@ -61,6 +55,24 @@ describe('AppController (e2e)', () => {
           error: 'Bad Request',
         });
     });
+
+    it('returns 400 on invalid cash', () => {
+      return request(app.getHttpServer())
+        .post('/purchase')
+        .expect(400)
+        .send({
+          money: [{ count: 'a', type: MoneyType.CASH }],
+          products: [new Coke(3)],
+        })
+        .expect({
+          statusCode: 400,
+          message: [
+            'money.0.count must be a number conforming to the specified constraints',
+          ],
+          error: 'Bad Request',
+        });
+    });
+
     it('error insufficient fund is mapped', async (done) => {
       const result = await request(app.getHttpServer())
         .post('/purchase')

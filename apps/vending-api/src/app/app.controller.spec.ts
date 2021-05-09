@@ -1,8 +1,6 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { MoneyType, ProductType } from '@vnd/common';
-
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { MoneyType, ProductType } from '@vnd/common';
+import { Test, TestingModule } from '@nestjs/testing';
 import { VendingInput } from './vending/vending.input';
 import { VendingModule } from './vending/vending.module';
 import { VendingService } from './vending/vending.service';
@@ -16,18 +14,10 @@ describe('AppController', () => {
     app = await Test.createTestingModule({
       imports: [VendingModule],
       controllers: [AppController],
-      providers: [AppService],
+      providers: [],
     }).compile();
     vendingSvc = app.get<VendingService>(VendingService);
     appController = app.get<AppController>(AppController);
-  });
-
-  describe('getData', () => {
-    it('should return "Welcome to vending-api!"', () => {
-      expect(appController.getData()).toEqual({
-        message: 'Welcome to vending-api!',
-      });
-    });
   });
 
   describe('converts moneyInput to Money', () => {
@@ -36,10 +26,12 @@ describe('AppController', () => {
         count: -3,
         type: MoneyType.COIN,
       });
+
       const cash = appController.moneyInputToMoney({
         count: 3,
         type: MoneyType.CASH,
       });
+
       expect(coin.count).toEqual(3);
       expect(coin.type).toEqual(MoneyType.COIN);
       expect(cash.count).toEqual(3);
@@ -56,14 +48,17 @@ describe('AppController', () => {
         count: -3,
         type: ProductType.COKE,
       });
+
       const pepsi = appController.productRequestToProduct({
         count: 3,
         type: ProductType.PEPSI,
       });
+
       const dew = appController.productRequestToProduct({
         count: 5,
         type: ProductType.DEW,
       });
+
       expect(coke.count).toEqual(3);
       expect(coke.type).toEqual(ProductType.COKE);
       expect(pepsi.count).toEqual(3);
