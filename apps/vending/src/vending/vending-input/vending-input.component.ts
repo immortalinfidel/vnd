@@ -20,7 +20,6 @@ export class VendingInputComponent {
   increment() {
     let val = this.fromGroup.get('count').value;
     val = val + 1;
-
     this.fromGroup.patchValue({ count: val });
   }
 

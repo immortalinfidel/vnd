@@ -4,6 +4,10 @@
 
 This project was generated using [Nx](https://nx.dev).
 
+
+## Assumptions and Approach
+Since i could not find denominations for cash so i assumed it to be 10. For multiple denominations of cash we can still use the same approach starting from highest denomination and moving towards lower denominations. The intention is to keep number of change returned to be minimal.
+
 ## Development server
 
 Run `nx serve vending-api` & Run `nx serve vending`
@@ -21,6 +25,8 @@ Run `nx build vending` to build the frontend project. The build artifacts will b
 ## Running unit tests
 
 Run `nx test vending-api` to execute the all tests via [Jest](https://jestjs.io).
+
+Run `nx test vending-api --codeCoverage` for code coverage.
 
 Run `nx affected:test` to execute the unit tests affected by a change.
 

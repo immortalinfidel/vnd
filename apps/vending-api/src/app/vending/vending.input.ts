@@ -1,16 +1,11 @@
-import { IMoneyInput, IProductRequest, IVendingInput } from '@vnd/common';
-import {
-  IsArray,
-  IsNotEmpty,
-  IsNumber,
-  IsNumberString,
-  ValidateNested,
-} from 'class-validator';
 import { Type } from 'class-transformer';
+import { IMoneyInput, IProductRequest, IVendingInput } from '@vnd/common';
+import { IsArray, IsNotEmpty, IsNumber, ValidateNested } from 'class-validator';
 
 export class MoneyInput implements IMoneyInput {
   @IsNotEmpty()
   type: string;
+
   @IsNumber()
   count: number;
 }
@@ -18,6 +13,7 @@ export class MoneyInput implements IMoneyInput {
 export class ProductRequest implements IProductRequest {
   @IsNotEmpty()
   type: string;
+
   @IsNumber()
   count: number;
 }

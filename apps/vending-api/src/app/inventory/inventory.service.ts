@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { IProduct, ProductType } from '@vnd/common';
 import { INITIAL_STOCK } from '../product/config';
+import { IProduct, ProductType } from '@vnd/common';
 import { Coke, Dew, Pepsi } from '../product/product.model';
 import { IProductStore, ProductStore } from '../product/product.store';
 

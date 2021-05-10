@@ -1,5 +1,6 @@
 import { IProduct, ProductType } from '@vnd/common';
 import { COKE_RATE, DEW_RATE, PEPSI_RATE } from './config';
+
 export class Product implements IProduct {
   type: string;
   rate: number;

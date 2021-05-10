@@ -1,11 +1,11 @@
-import { Injectable } from '@nestjs/common';
-import { IMoney, MoneyType } from '@vnd/common';
 import {
   CASH_DENOMINATION,
   COIN_DENOMINATION,
   INITIAL_CASH_BALANCE,
   INITIAL_COIN_BALANCE,
 } from '../money/config';
+import { Injectable } from '@nestjs/common';
+import { IMoney, MoneyType } from '@vnd/common';
 import { newCash, newCoin } from '../money/money.model';
 import { IMoneyStore, MoneyStore } from '../money/money.store';
 

@@ -15,8 +15,8 @@ import {
 } from '@vnd/common';
 
 import { newCash, newCoin } from './money/money.model';
-import { Coke, Dew, Pepsi } from './product/product.model';
 import { VendingInput } from './vending/vending.input';
+import { Coke, Dew, Pepsi } from './product/product.model';
 import { VendingService } from './vending/vending.service';
 
 @Controller()
@@ -62,6 +62,7 @@ export class AppController {
         throw new UnprocessableEntityException('Invalid Product Type');
     }
   }
+
   toHttpError(err: Error) {
     switch (err.message) {
       case VendingErrors.CHANGE_UNAVAILABLE:

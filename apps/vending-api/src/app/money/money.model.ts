@@ -1,5 +1,6 @@
 import { IMoney, MoneyType } from '@vnd/common';
 import { CASH_DENOMINATION, COIN_DENOMINATION } from './config';
+
 export class Money implements IMoney {
   type: string;
   count: number;

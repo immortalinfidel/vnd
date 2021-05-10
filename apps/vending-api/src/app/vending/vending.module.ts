@@ -1,7 +1,7 @@
-import { VendingService } from './vending.service';
 import { Module } from '@nestjs/common';
-import { InventoryModule } from '../inventory/inventory.module';
+import { VendingService } from './vending.service';
 import { CounterModule } from '../counter/counter.module';
+import { InventoryModule } from '../inventory/inventory.module';
 
 @Module({
   imports: [InventoryModule, CounterModule],

@@ -17,6 +17,7 @@ export class MoneyStore implements IMoneyStore {
     this.store.count = this.store.count + money.count;
     return this.store;
   }
+
   withdraw(count: number) {
     const withdraw = {
       ...this.store,
@@ -29,9 +30,11 @@ export class MoneyStore implements IMoneyStore {
     withdraw.count = count;
     return withdraw;
   }
+
   getMoney(): IMoney {
     return this.store;
   }
+
   getBalance(): number {
     return this.store.count * this.store.denomination;
   }

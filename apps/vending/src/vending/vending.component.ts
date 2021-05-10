@@ -18,7 +18,6 @@ export class VendingComponent {
   @Output() formSubmitted = new EventEmitter();
 
   static buildForm(item: IVendingInput) {
-    console.log(item);
     return new FormGroup({
       money: new FormArray(
         item ? item.money.map((i) => VendingInputComponent.buildForm(i)) : []
@@ -38,7 +37,6 @@ export class VendingComponent {
   }
   onSubmit() {
     const value = this.formGroup.getRawValue();
-
     this.formSubmitted.emit(value);
   }
 }

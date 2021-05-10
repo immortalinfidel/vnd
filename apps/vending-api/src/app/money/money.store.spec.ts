@@ -1,5 +1,5 @@
-import { MoneyStore } from './money.store';
 import { newCash } from './money.model';
+import { MoneyStore } from './money.store';
 
 describe('Money Store', () => {
   it('is defined', () => {
@@ -11,12 +11,14 @@ describe('Money Store', () => {
     const balance = store.getBalance();
     expect(balance).toBe(100);
   });
+
   it('returns money', () => {
     const store = new MoneyStore(newCash(10));
     const money = store.getMoney();
     expect(money).toBeDefined();
     expect(money.count).toBe(10);
   });
+
   it('deposits  balance', () => {
     const store = new MoneyStore(newCash(10));
     const deposit = newCash(2);

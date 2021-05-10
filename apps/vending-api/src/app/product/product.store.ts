@@ -12,9 +12,11 @@ export class ProductStore implements IProductStore {
   constructor(initialStock: IProduct) {
     this.store = initialStock;
   }
+
   getProduct(): IProduct {
     return this.store;
   }
+
   retrieveProduct(count: number) {
     if (this.store.count < count) {
       throw new Error('Unable To Fullfill Order');
@@ -26,10 +28,12 @@ export class ProductStore implements IProductStore {
     product.count = count;
     return product;
   }
+
   addProduct(product: IProduct) {
     this.store.count += product.count;
     return this.store;
   }
+
   count() {
     return this.store.count;
   }

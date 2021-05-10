@@ -1,10 +1,10 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { IMoney, IProduct, IVendingResult, VendingErrors } from '@vnd/common';
-import { CounterService, ICounterService } from '../counter/counter.service';
 import {
   IInventoryService,
   InventoryService,
 } from '../inventory/inventory.service';
+import { Inject, Injectable } from '@nestjs/common';
+import { CounterService, ICounterService } from '../counter/counter.service';
+import { IMoney, IProduct, IVendingResult, VendingErrors } from '@vnd/common';
 
 export interface IVendingService {
   showStatus(): IVendingResult;
