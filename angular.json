@@ -150,7 +150,7 @@
     },
     "vending-api": {
       "root": "apps/vending-api",
-      "sourceRoot": "apps\\vending-api\\src",
+      "sourceRoot": "apps/vending-api/src",
       "projectType": "application",
       "architect": {
         "build": {
