@@ -21,7 +21,7 @@ describe('InventoryService', () => {
       const pepsi = new Pepsi(10);
       const dew = new Dew(3);
       const total = InventoryService.getTotalCost([coke, pepsi, dew]);
-      expect(total).toBe(325);
+      expect(total).toBe(540);
     });
   });
 

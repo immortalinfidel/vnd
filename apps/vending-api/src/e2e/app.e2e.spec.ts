@@ -33,9 +33,9 @@ describe('AppController (e2e)', () => {
       .expect(200)
       .expect({
         products: [
-          { type: 'COKE', rate: 10, count: 10 },
-          { type: 'DEW', rate: 25, count: 10 },
-          { type: 'PEPSI', rate: 15, count: 10 },
+          { type: 'COKE', rate: 20, count: 10 },
+          { type: 'DEW', rate: 30, count: 10 },
+          { type: 'PEPSI', rate: 25, count: 10 },
         ],
         money: [
           { count: 100, type: 'COIN', denomination: 1 },
@@ -90,7 +90,7 @@ describe('AppController (e2e)', () => {
       const result = await request(app.getHttpServer())
         .post('/purchase')
         .send({
-          money: [newCash(11) as IMoneyInput],
+          money: [newCash(22) as IMoneyInput],
           products: [new Coke(11)],
         } as IVendingInput);
       expect(result.body.message).toEqual(VendingErrors.INSUFFICIENT_STOCK);
@@ -103,7 +103,7 @@ describe('AppController (e2e)', () => {
       const result = await request(app.getHttpServer())
         .post('/purchase')
         .send({
-          money: [newCash(2) as IMoneyInput],
+          money: [newCash(3) as IMoneyInput],
           products: [new Pepsi(1)],
         } as IVendingInput);
       expect(result.body.message).toEqual(VendingErrors.CHANGE_UNAVAILABLE);

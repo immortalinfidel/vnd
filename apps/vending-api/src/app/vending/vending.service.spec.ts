@@ -40,19 +40,19 @@ describe('InventoryService', () => {
 
     it('returns Error On Insufficient Stock', () => {
       expect(() => {
-        vendingSvc.processPurchase([newCash(13)], [new Coke(13)]);
+        vendingSvc.processPurchase([newCash(26)], [new Coke(13)]);
       }).toThrowError(VendingErrors.INSUFFICIENT_STOCK);
     });
 
     it('returns Error On Insufficient Change', () => {
       counterSvc.withdraw(newCoin(100));
       expect(() => {
-        vendingSvc.processPurchase([newCash(2)], [new Pepsi(1)]);
+        vendingSvc.processPurchase([newCash(3)], [new Pepsi(1)]);
       }).toThrowError(VendingErrors.CHANGE_UNAVAILABLE);
     });
 
     it('Performs Purchase', () => {
-      const result = vendingSvc.processPurchase([newCash(2)], [new Pepsi(1)]);
+      const result = vendingSvc.processPurchase([newCash(3)], [new Pepsi(1)]);
       expect(result.products[0].count).toEqual(1);
       expect(CounterService.getTotalAmount(result.money)).toEqual(5);
     });
